@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya | Web Developer</title>
+    
+    <!-- CSS LANGSUNG DI DALAM HTML (TIDAK PERLU FILE TERPISAH) -->
+    <style>
+        /* RESET & GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #e67e22;
+            border-radius: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #f39c12;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 70px 0;
+            background-color: white;
+        }
+
+        .about h2, .skills h2, .portfolio h2, .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .about-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* SKILLS TABLE */
+        .skills {
+            background-color: #ecf0f1;
+            padding: 70px 0;
+        }
+
+        .skills-table-container {
+            overflow-x: auto;
+        }
+
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skills-table th, .skills-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .skills-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .skills-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* SINGLE PROJECT STYLE */
+        .portfolio {
+            padding: 70px 0;
+            background-color: #f8f9fa;
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .single-project {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .project-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .project-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .project-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .project-details {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .project-details h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .project-details p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .project-info p {
+            margin-bottom: 10px;
+        }
+
+        .project-info ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .project-info li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #e67e22;
+            color: #e67e22;
+        }
+
+        .btn-outline:hover {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* RESPONSIVE MEDIA QUERY */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .about-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-img {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            
+            .about-img img {
+                max-width: 180px;
+            }
+
+            .skills-table th, .skills-table td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            .single-project {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER dengan navigasi -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h2>MyPorto</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECTION HOME -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Halo, Saya <span class="highlight">Aksal Bahari</span></h1>
+                <p>Saya seorang mahasiswa yang sedang belajar pemrograman web. Website ini adalah tugas pertama saya menggunakan HTML & CSS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TENTANG -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Tentang Saya</h2>
+            <div class="about-wrapper">
+                <div class="about-img">
+                    <!-- GANTI dengan nama file gambar ANDA -->
+                    <img src="image.jpg" alt="Foto Profil Aksal Bahari">
+                </div>
+                <div class="about-text">
+                    <p>Saya adalah seorang developer pemula yang antusias dalam dunia web development. Saat ini saya sedang mendalami HTML, CSS, dan JavaScript.</p>
+                    <p>Saya percaya bahwa teknologi dapat membantu banyak orang, dan saya ingin berkontribusi melalui kode yang saya tulis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION KEAHLIAN (mengandung tabel) -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Keahlian Saya</h2>
+            <div class="skills-table-container">
+                <table class="skills-table">
+                    <thead>
+                        <tr>
+                            <th>Teknologi</th>
+                            <th>Tingkat</th>
+                            <th>Pengalaman</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>HTML</td><td>Lanjut</td><td>6 bulan</td></tr>
+                        <tr><td>CSS</td><td>Menengah</td><td>6 bulan</td></tr>
+                        <tr><td>JavaScript</td><td>Dasar</td><td>3 bulan</td></tr>
+                        <tr><td>Git/GitHub</td><td>Menengah</td><td>4 bulan</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PORTOFOLIO - HANYA PROYEK PORTOFOLIO INI -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Proyek Saya</h2>
+            <div class="single-project">
+                <div class="project-image">
+                    <!-- GANTI "gambar_portofolio.jpg" dengan nama file gambar ANDA -->
+                    <img src="gambar_portofolio.jpg" alt="Website Portofolio Ini">
+                </div>
+                <div class="project-details">
+                    <h3>Portofolio Ini</h3>
+                    <p>Tugas pertama web statis responsive yang dibuat menggunakan HTML dan CSS murni tanpa framework.</p>
+                    <div class="project-info">
+                        <p><strong>Deskripsi:</strong> Website portofolio pribadi yang menampilkan profil, keahlian, dan proyek. Dibuat untuk memenuhi tugas pemrograman web.</p>
+                        <p><strong>Teknologi yang digunakan:</strong></p>
+                        <ul>
+                            <li>✅ HTML5 (struktur semantik)</li>
+                            <li>✅ CSS3 (styling modern & animasi)</li>
+                            <li>✅ Flexbox (layout responsive)</li>
+                            <li>✅ Media Query (mobile friendly)</li>
+                            <li>✅ GitHub Pages (hosting gratis)</li>
+                        </ul>
+                        <p><strong>Fitur website:</strong></p>
+                        <ul>
+                            <li>✅ Navigasi antar halaman (smooth scroll)</li>
+                            <li>✅ Tabel daftar keahlian</li>
+                            <li>✅ Galeri proyek</li>
+                            <li>✅ Desain responsive untuk semua ukuran layar</li>
+                            <li>✅ Tampilan modern dengan warna menarik</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn">Lihat Live Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION KONTAK -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Kontak Saya</h2>
+            <p>Email: aksalbahari@gmail.com</p>
+            <p>GitHub: <a href="#">github.com/aksalbahari</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portofolio Saya. Dibuat untuk tugas pemrograman web.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
